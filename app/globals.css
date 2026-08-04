@@ -3,6 +3,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --theme-accent: #ceccff;
+  --theme-accent-soft: rgba(206, 204, 255, 0.75);
+  --theme-accent-border: rgba(206, 204, 255, 0.35);
+  --theme-accent-border-hover: rgba(206, 204, 255, 0.45);
+  --theme-accent-border-strong: rgba(206, 204, 255, 0.6);
+  --theme-accent-bg-soft: rgba(206, 204, 255, 0.15);
 }
 
 @theme inline {
@@ -20,7 +26,39 @@
 }
 
 body {
-  /* background: var(--background); */
-  color: var(--foreground);
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(206, 204, 255, 0.16), transparent 35%),
+    linear-gradient(180deg, #07111f 0%, #050816 45%, #02030a 100%);
+  color: #f5f7fb;
   font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+.theme-accent {
+  color: var(--theme-accent);
+}
+
+.theme-accent-soft {
+  color: var(--theme-accent-soft);
+}
+
+.theme-accent-border {
+  border-color: var(--theme-accent-border);
+}
+
+.theme-accent-border-hover:hover {
+  border-color: var(--theme-accent-border-hover);
+}
+
+.theme-accent-border-strong {
+  border-color: var(--theme-accent-border-strong);
+}
+
+.theme-accent-bg-soft {
+  background-color: var(--theme-accent-bg-soft);
+}
+
+.theme-accent-focus:focus-visible {
+  outline-color: var(--theme-accent);
 }
