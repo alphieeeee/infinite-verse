@@ -30,7 +30,7 @@ export default function VerseProjector({
 
   return (
     <div className="space-y-8">
-      <VerseHero verse={selectedVerse} translationLabel={translationLabel} bookLabel={bookLabel} />
+      <VerseHero verse={selectedVerse} bookLabel={bookLabel} />
       <Breadcrumbs
         items={[
           { label: "BIBLE", href: "/" },
