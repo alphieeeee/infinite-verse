@@ -8,7 +8,8 @@ type VerseHeroProps = {
 };
 
 export default function VerseHero({ verse, bookLabel }: VerseHeroProps) {
-  const reference = verse ? `${verse.book} ${verse.chapter}:${verse.verse}` : `${bookLabel} 1:1`;
+  // const reference = verse ? `${verse.book} ${verse.chapter}:${verse.verse}` : `${bookLabel} 1:1`;
+  const reference = verse ? `${verse.book ? verse.book : ''} ${verse.chapter}` : `${bookLabel} 1:1`;
 
   return (
     <section className="relative flex max-h-[72vh] min-h-[50vh] flex-col rounded-3xl border border-white/10 bg-white/5 p-5 text-white">
