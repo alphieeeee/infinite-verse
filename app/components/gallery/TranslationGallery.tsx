@@ -30,10 +30,10 @@ export default function TranslationGallery({ translations }: TranslationGalleryP
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.28em]">
-                  Translation
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/65">
+                  {translation.identifier}
                 </p>
-                <h3 className="mt-2 text-xl font-semibold theme-accent">{translation.name}</h3>
+                <h3 className="mt-2 text-md font-semibold theme-accent">{translation.name}</h3>
               </div>
               <span
                 aria-hidden="true"

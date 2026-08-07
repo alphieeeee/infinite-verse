@@ -14,7 +14,7 @@ export default function ChapterGrid({
   return (
     <section aria-labelledby="chapters-gallery-title" className="space-y-4">
       <div>
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] theme-accent-soft">Chapters</p>
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] theme-accent">Chapters</p>
         {/* <h2 id="chapters-gallery-title" className="mt-2 text-2xl font-semibold text-white sm:text-3xl">
           Browse the chapters in this book.
         </h2> */}

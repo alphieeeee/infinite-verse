@@ -59,7 +59,7 @@ export default function VerseSwiperGallery({ verses, selectedVerse, onSelectVers
     <section aria-labelledby="verses-gallery-title" className="space-y-4">
       <div className="flex items-end justify-between gap-4">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] theme-accent-soft">Verses</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] theme-accent">Verses</p>
         </div>
 
         <div className="flex gap-2">

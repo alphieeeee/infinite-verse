@@ -1,8 +1,12 @@
 export type FavoriteVerse = {
-  id: string;
   userId: string;
+  translationId: string;
+  bookId: string;
+  chapter: string;
+  verse: string;
   reference: string;
   text: string;
-  translationId: string;
   createdAt: string;
 };
+
+export type FavoriteVerseInput = Omit<FavoriteVerse, "createdAt">;

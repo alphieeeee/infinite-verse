@@ -13,6 +13,8 @@ type VerseProjectorProps = {
   translationHref: string;
   bookHref: string;
   initialVerse: BibleApiVerse | null;
+  translationId: string;
+  bookId: string;
 };
 
 export default function VerseProjector({
@@ -22,6 +24,8 @@ export default function VerseProjector({
   translationHref,
   bookHref,
   initialVerse,
+  translationId,
+  bookId,
 }: VerseProjectorProps) {
   const [selectedVerse, setSelectedVerse] = useState<BibleApiVerse | null>(initialVerse);
   const selectedReference = selectedVerse
@@ -30,10 +34,15 @@ export default function VerseProjector({
 
   return (
     <div className="space-y-8">
-      <VerseHero verse={selectedVerse} bookLabel={bookLabel} />
+      <VerseHero
+        verse={selectedVerse}
+        bookLabel={bookLabel}
+        translationId={translationId}
+        bookId={bookId}
+      />
       <Breadcrumbs
         items={[
-          { label: "BIBLE", href: "/" },
+          { label: "SCRIPTURE", href: "/" },
           { label: translationLabel.toUpperCase(), href: translationHref },
           { label: bookLabel.toUpperCase(), href: bookHref },
           { label: selectedReference.toUpperCase() },
