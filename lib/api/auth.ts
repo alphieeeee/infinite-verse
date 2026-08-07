@@ -6,7 +6,7 @@ import {
   type Unsubscribe,
   type User,
 } from "firebase/auth";
-import { auth } from "./firebase";
+import { getFirebaseAuth } from "./firebase";
 import type { AuthUser, LoginCredentials } from "../types/auth";
 import type { RegistrationCredentials } from "../types/auth";
 
@@ -40,6 +40,7 @@ export async function login(credentials: LoginCredentials): Promise<AuthUser> {
   validateCredentials(credentials);
 
   try {
+    const auth = getFirebaseAuth();
     const result = await signInWithEmailAndPassword(auth, credentials.email.trim(), credentials.password);
     return mapAuthUser(result.user);
   } catch (error) {
@@ -55,6 +56,7 @@ export async function register(credentials: RegistrationCredentials): Promise<Au
   validateCredentials(credentials);
 
   try {
+    const auth = getFirebaseAuth();
     const result = await createUserWithEmailAndPassword(auth, credentials.email.trim(), credentials.password);
     return mapAuthUser(result.user);
   } catch (error) {
@@ -68,6 +70,7 @@ export async function submitRegistration(credentials: RegistrationCredentials): 
 
 export async function logout(): Promise<void> {
   try {
+    const auth = getFirebaseAuth();
     await signOut(auth);
   } catch (error) {
     throw new Error(getAuthErrorMessage(error, "log out"));
@@ -75,7 +78,14 @@ export async function logout(): Promise<void> {
 }
 
 export function subscribeToAuthState(callback: (user: AuthUser | null) => void): Unsubscribe {
-  return onAuthStateChanged(auth, (user) => {
-    callback(user ? mapAuthUser(user) : null);
-  });
+  try {
+    const auth = getFirebaseAuth();
+
+    return onAuthStateChanged(auth, (user) => {
+      callback(user ? mapAuthUser(user) : null);
+    });
+  } catch {
+    callback(null);
+    return () => undefined;
+  }
 }
