@@ -14,7 +14,6 @@ export default async function ChapterPage({
   const initialVerse: BibleApiVerse | null = verses[0] ?? null;
   const translationLabel = verseResponse?.translation.language ?? "English";
   const bookLabel = book?.name ?? bookId.toUpperCase();
-  console.log(bookLabel);
 
   return (
     <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 pb-8 sm:px-6 lg:px-8 lg:pb-10">
@@ -25,6 +24,8 @@ export default async function ChapterPage({
         translationHref={`/${translationId}`}
         bookHref={`/${translationId}/${bookId}`}
         initialVerse={initialVerse}
+        translationId={translationId}
+        bookId={bookId}
       />
     </main>
   );

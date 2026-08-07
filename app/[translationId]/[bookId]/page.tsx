@@ -25,7 +25,7 @@ export default async function BookPage({
       />
       <Breadcrumbs
         items={[
-          { label: "BIBLE", href: "/" },
+          { label: "SCRIPTURE", href: "/" },
           { label: translationLabel, href: `/${translationId}` },
           { label: book?.name?.toUpperCase() ?? bookId.toUpperCase() },
         ]}

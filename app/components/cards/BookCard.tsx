@@ -16,7 +16,7 @@ export default function BookCard({
     >
       <div>
         <p className="text-xs font-semibold uppercase tracking-[0.3em]">Book of</p>
-        <h3 className="mt-2 text-xl font-semibold leading-tight uppercase theme-accent">{book.name}</h3>
+        <h3 className="mt-2 text-lg font-semibold leading-tight uppercase theme-accent">{book.name}</h3>
       </div>
       {/* <p className="mt-4 text-xs uppercase tracking-[0.22em] text-white/50">{book.id}</p> */}
     </Link>

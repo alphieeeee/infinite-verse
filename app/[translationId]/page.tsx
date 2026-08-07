@@ -20,10 +20,10 @@ export default async function TranslationPage({
     <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 pb-8 sm:px-6 lg:px-8 lg:pb-10">
       <PageHero
         eyebrow=""
-        title="Start with one verse, then explore the rest."
-        description="A calm, beginner-friendly Bible reading experience that helps you begin with a single passage."
+        title="Every journey begins with a single verse."
+        description="Explore Scripture at your own pace, one passage at a time."
       />
-      <Breadcrumbs items={[{ label: "BIBLE", href: "/" }, { label: translationLabel, href: `/${translationId}` }]} />
+      <Breadcrumbs items={[{ label: "SCRIPTURE", href: "/" }, { label: translationLabel, href: `/${translationId}` }]} />
       <div className="space-y-10">
         <BookCarousel
           title="Old Testament"

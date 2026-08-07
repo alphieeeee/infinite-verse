@@ -28,7 +28,8 @@ export default function HomeHeroVerse({ verse }: HomeHeroVerseProps) {
 
       <div className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5 sm:p-6 flex-1">
         <p className="text-sm font-semibold uppercase tracking-[0.3em]">
-          {verse?.translation.name ?? "World English Bible"}
+          {/* {verse?.translation.name ?? "World English Bible"} */}
+          Let Scripture Find You.
         </p>
         <blockquote className="mt-4">
           <p className="text-2xl leading-snug text-white sm:text-3xl theme-accent">
