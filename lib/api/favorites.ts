@@ -1,5 +1,5 @@
 import { get, ref, remove, set, type DataSnapshot } from "firebase/database";
-import { db } from "./firebase";
+import { getFirebaseDatabase } from "./firebase";
 import type { FavoriteVerse, FavoriteVerseInput } from "../types/favorites";
 
 function getErrorMessage(error: unknown, fallbackMessage: string) {
@@ -22,6 +22,7 @@ function assertFavoriteKey(value: string, fieldName: string) {
 
 export async function addFavorite(favorite: FavoriteVerseInput): Promise<FavoriteVerse> {
   try {
+    const db = getFirebaseDatabase();
     assertFavoriteKey(favorite.userId, "userId");
     assertFavoriteKey(favorite.translationId, "translationId");
     assertFavoriteKey(favorite.bookId, "bookId");
@@ -53,6 +54,7 @@ export async function removeFavorite(
   verse: string,
 ): Promise<void> {
   try {
+    const db = getFirebaseDatabase();
     assertFavoriteKey(userId, "userId");
     assertFavoriteKey(translationId, "translationId");
     assertFavoriteKey(bookId, "bookId");
@@ -73,6 +75,7 @@ export async function getFavorite(
   verse: string,
 ): Promise<FavoriteVerse | null> {
   try {
+    const db = getFirebaseDatabase();
     assertFavoriteKey(userId, "userId");
     assertFavoriteKey(translationId, "translationId");
     assertFavoriteKey(bookId, "bookId");
@@ -91,6 +94,7 @@ export async function getFavorite(
 
 export async function getFavorites(userId: string): Promise<FavoriteVerse[]> {
   try {
+    const db = getFirebaseDatabase();
     assertFavoriteKey(userId, "userId");
     const snapshot = await get(ref(db, `${userId}/favorites`));
 

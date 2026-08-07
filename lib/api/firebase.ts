@@ -32,9 +32,17 @@ function assertFirebaseConfig(config: FirebaseConfig) {
   }
 }
 
-assertFirebaseConfig(firebaseConfig);
+export function getFirebaseApp() {
+  assertFirebaseConfig(firebaseConfig);
+  return getApps().length ? getApp() : initializeApp(firebaseConfig);
+}
 
-export const firebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
-export const auth: Auth = getAuth(firebaseApp);
-export const db: Database = getDatabase(firebaseApp);
+export function getFirebaseAuth(): Auth {
+  return getAuth(getFirebaseApp());
+}
+
+export function getFirebaseDatabase(): Database {
+  return getDatabase(getFirebaseApp());
+}
+
 export { firebaseConfig };
