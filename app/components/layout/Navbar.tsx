@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { routes } from "../../../lib/constants/routes";
@@ -8,9 +9,17 @@ import { logout } from "../../../lib/api/auth";
 import { useAuth } from "../auth/AuthProvider";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const { user, isAuthReady } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const favoritesHref = user ? routes.favorites : `${routes.login}?next=${routes.favorites}`;
+  const isFavoritesActive = pathname === routes.favorites || pathname.startsWith(`${routes.favorites}/`);
+  const isAuthRoute =
+    pathname === routes.login ||
+    pathname.startsWith(`${routes.login}/`) ||
+    pathname === routes.register ||
+    pathname.startsWith(`${routes.register}/`);
+  const isScriptureActive = !isFavoritesActive && !isAuthRoute;
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -57,13 +66,19 @@ export default function Navbar() {
           <div className="hidden items-center gap-5 text-sm font-semibold uppercase text-white sm:flex">
             <Link
               href={routes.home}
-              className="transition-colors hover:text-[var(--theme-accent)] focus-visible:text-[var(--theme-accent)]"
+              aria-current={isScriptureActive ? "page" : undefined}
+              className={`transition-colors hover:text-[var(--theme-accent)] focus-visible:text-[var(--theme-accent)] ${
+                isScriptureActive ? "theme-accent" : ""
+              }`}
             >
               SCRIPTURE
             </Link>
             <Link
               href={favoritesHref}
-              className="transition-colors hover:text-[var(--theme-accent)] focus-visible:text-[var(--theme-accent)]"
+              aria-current={isFavoritesActive ? "page" : undefined}
+              className={`transition-colors hover:text-[var(--theme-accent)] focus-visible:text-[var(--theme-accent)] ${
+                isFavoritesActive ? "theme-accent" : ""
+              }`}
             >
               FAVORITES
             </Link>
@@ -111,10 +126,24 @@ export default function Navbar() {
       ? createPortal(
           <div id="mobile-menu" className="fixed inset-0 z-40 bg-[#050816] px-4 pb-8 pt-24 sm:hidden">
             <div className="mx-auto flex max-w-sm flex-col gap-2 text-base font-semibold text-white">
-              <Link href={routes.home} onClick={closeMenu} className="rounded-xl px-4 py-3 hover:theme-accent-bg-soft">
+              <Link
+                href={routes.home}
+                onClick={closeMenu}
+                aria-current={isScriptureActive ? "page" : undefined}
+                className={`rounded-xl px-4 py-3 hover:theme-accent-bg-soft ${
+                  isScriptureActive ? "theme-accent theme-accent-bg-soft" : ""
+                }`}
+              >
                 SCRIPTURE
               </Link>
-              <Link href={favoritesHref} onClick={closeMenu} className="rounded-xl px-4 py-3 hover:theme-accent-bg-soft">
+              <Link
+                href={favoritesHref}
+                onClick={closeMenu}
+                aria-current={isFavoritesActive ? "page" : undefined}
+                className={`rounded-xl px-4 py-3 hover:theme-accent-bg-soft ${
+                  isFavoritesActive ? "theme-accent theme-accent-bg-soft" : ""
+                }`}
+              >
                 FAVORITES
               </Link>
               {isAuthReady && user ? (

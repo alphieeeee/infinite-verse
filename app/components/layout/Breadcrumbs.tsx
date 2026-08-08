@@ -16,13 +16,30 @@ export default function Breadcrumbs({ items }: { items: Item[] }) {
         animOnce={true}
         onScroll={false}
       >
-        <ol className="flex flex-wrap gap-2">
-          {items.map((item, index) => (
-            <li key={`${item.label}-${index}`} className="flex items-center gap-2">
-              {item.href ? <Link href={item.href}>{item.label.toUpperCase()}</Link> : <span>{item.label.toUpperCase()}</span>}
-              {index < items.length - 1 ? <span>/</span> : null}
-            </li>
-          ))}
+        <ol className="flex flex-wrap gap-2 font-semibold">
+          {items.map((item, index) => {
+            const isCurrentPage = index === items.length - 1;
+            const label = item.label.toUpperCase();
+
+            return (
+              <li key={`${item.label}-${index}`} className="flex items-center gap-2">
+                {item.href ? (
+                  <Link
+                    href={item.href}
+                    aria-current={isCurrentPage ? "page" : undefined}
+                    className={isCurrentPage ? "theme-accent" : "transition-colors hover:text-[var(--theme-accent)]"}
+                  >
+                    {label}
+                  </Link>
+                ) : (
+                  <span aria-current={isCurrentPage ? "page" : undefined} className={isCurrentPage ? "theme-accent" : undefined}>
+                    {label}
+                  </span>
+                )}
+                {index < items.length - 1 ? <span aria-hidden="true">/</span> : null}
+              </li>
+            );
+          })}
         </ol>
       </AnimPanning>
     </nav>
