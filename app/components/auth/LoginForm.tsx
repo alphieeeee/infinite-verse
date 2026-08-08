@@ -73,7 +73,7 @@ export default function LoginForm({ nextPath }: { nextPath?: string }) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full rounded-xl bg-[var(--theme-accent)] px-4 py-3 font-semibold text-slate-950 transition hover:brightness-110 disabled:cursor-wait disabled:opacity-60"
+          className="w-full cursor-pointer rounded-xl bg-[var(--theme-accent)] px-4 py-3 font-semibold text-slate-950 transition hover:brightness-110 disabled:cursor-wait disabled:opacity-60"
         >
           {isSubmitting ? "LOGGING IN..." : "LOGIN"}
         </button>

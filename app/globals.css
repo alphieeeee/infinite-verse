@@ -35,6 +35,14 @@ body {
   line-height: 1.5;
 }
 
+:where(a[href], button:not(:disabled), [role="button"]:not([aria-disabled="true"])) {
+  cursor: pointer;
+}
+
+:where(button:disabled, [aria-disabled="true"]) {
+  cursor: not-allowed;
+}
+
 .theme-accent {
   color: var(--theme-accent);
 }

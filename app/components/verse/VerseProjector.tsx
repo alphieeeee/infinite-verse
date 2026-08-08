@@ -5,6 +5,7 @@ import Breadcrumbs from "../layout/Breadcrumbs";
 import type { BibleApiVerse } from "../../../lib/types/bible";
 import VerseHero from "../hero/VerseHero";
 import VerseSwiperGallery from "../gallery/VerseSwiperGallery";
+import AnimPanning from "../gsap/AnimPanning";
 
 type VerseProjectorProps = {
   verses: BibleApiVerse[];
@@ -48,7 +49,18 @@ export default function VerseProjector({
           { label: selectedReference.toUpperCase() },
         ]}
       />
-      <VerseSwiperGallery verses={verses} selectedVerse={selectedVerse} onSelectVerse={setSelectedVerse} />
+      <AnimPanning
+        duration={0.8}
+        delay={0.2}
+        direction="up"
+        from={0}
+        to={0}
+        fade="in"
+        animOnce={true}
+        onScroll={false}>
+        <VerseSwiperGallery verses={verses} selectedVerse={selectedVerse} onSelectVerse={setSelectedVerse} />
+      </AnimPanning>
+
     </div>
   );
 }

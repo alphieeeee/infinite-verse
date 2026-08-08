@@ -4,6 +4,7 @@ import ChapterGrid from "../../components/gallery/ChapterGrid";
 import PageHero from "../../components/hero/PageHero";
 import ErrorState from "../../components/ui/ErrorState";
 import Link from "next/link";
+import AnimPanning from "@/app/components/gsap/AnimPanning";
 
 export default async function BookPage({
   params,
@@ -35,7 +36,18 @@ export default async function BookPage({
           message="No chapters were found for this book. Please click back and choose another book or translation."
         />
       ) : (
-        <ChapterGrid translationId={translationId} bookId={bookId} chapters={chapters} />
+        <AnimPanning
+          duration={0.8}
+          delay={0.2}
+          direction="up"
+          from={0}
+          to={0}
+          fade="in"
+          animOnce={true}
+          onScroll={false}
+        >
+          <ChapterGrid translationId={translationId} bookId={bookId} chapters={chapters} />
+        </AnimPanning>
       )}
       {chapters.length === 0 ? (
         <div>
