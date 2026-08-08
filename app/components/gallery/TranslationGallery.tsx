@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { BibleApiTranslation } from "../../../lib/types/bible";
 import { buildRoute } from "../../../lib/helpers/buildRoute";
+import AnimPanning from "../gsap/AnimPanning";
 
 type TranslationGalleryProps = {
   translations: BibleApiTranslation[];
@@ -10,23 +11,36 @@ export default function TranslationGallery({ translations }: TranslationGalleryP
   return (
     <section aria-labelledby="translations-title" className="space-y-5">
       <div className="max-w-2xl">
-        <p className="text-sm font-semibold uppercase tracking-[0.32em] theme-accent-soft">
-          Choose a translation
-        </p>
-        {/* <h2 id="translations-title" className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
-          Find a translation that feels comfortable to read.
-        </h2>
-        <p className="mt-3 text-sm leading-6 text-white/72 sm:text-base">
-          Start with a familiar translation, then move into books, chapters, and verses at your own pace.
-        </p> */}
+        <AnimPanning
+          duration={0.4}
+          direction="up"
+          from={0}
+          to={0}
+          fade="in"
+          animOnce={true}
+        >
+          <p className="text-sm font-semibold uppercase tracking-[0.32em] theme-accent-soft">
+            Choose a translation
+          </p>
+        </AnimPanning>
+        <h2 id="translations-title" className="sr-only">Bible translations</h2>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {translations.map((translation) => (
+          <AnimPanning
+            duration={0.8}
+            key={`${translation.identifier}-translation`}
+            direction="up"
+            from={0}
+            to={0}
+            fade="in"
+            animOnce={true}
+            className="group rounded-[1.5rem] border border-white/10 bg-white/5 p-5 text-white shadow-sm transition hover:-translate-y-0.5 theme-accent-border theme-accent-border-hover hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 theme-accent-focus"
+          >
           <Link
             key={translation.identifier}
             href={buildRoute(translation.identifier)}
-            className="group rounded-[1.5rem] border border-white/10 bg-white/5 p-5 text-white shadow-sm transition hover:-translate-y-0.5 theme-accent-border theme-accent-border-hover hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 theme-accent-focus"
           >
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -46,6 +60,7 @@ export default function TranslationGallery({ translations }: TranslationGalleryP
               {translation.language} {translation.license ? `• ${translation.license}` : ""}
             </p>
           </Link>
+          </AnimPanning>
         ))}
       </div>
     </section>

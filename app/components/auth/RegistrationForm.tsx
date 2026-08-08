@@ -63,7 +63,7 @@ export default function RegistrationForm() {
 
         {error ? <p role="alert" className="text-sm text-red-300">{error}</p> : null}
 
-        <button type="submit" disabled={isSubmitting} className="w-full rounded-xl bg-[var(--theme-accent)] px-4 py-3 font-semibold text-slate-950 transition hover:brightness-110 disabled:cursor-wait disabled:opacity-60">
+        <button type="submit" disabled={isSubmitting} className="w-full cursor-pointer rounded-xl bg-[var(--theme-accent)] px-4 py-3 font-semibold text-slate-950 transition hover:brightness-110 disabled:cursor-wait disabled:opacity-60">
           {isSubmitting ? "CREATING ACCOUNT..." : "REGISTER"}
         </button>
       </form>

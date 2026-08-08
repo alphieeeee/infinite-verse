@@ -7,6 +7,7 @@ import { getFavorites, removeFavorite } from "../../../lib/api/favorites";
 import { routes } from "../../../lib/constants/routes";
 import type { FavoriteVerse } from "../../../lib/types/favorites";
 import { useAuth } from "../auth/AuthProvider";
+import AnimPanning from "../gsap/AnimPanning";
 
 export default function FavoritesList() {
   const router = useRouter();
@@ -67,32 +68,66 @@ export default function FavoritesList() {
   return (
     <section aria-labelledby="favorites-heading" className="py-10">
       <div className="mb-8">
-        <p className="text-xs font-semibold tracking-[0.2em] theme-accent">YOUR LIBRARY</p>
-        <h1 id="favorites-heading" className="mt-2 text-3xl font-semibold text-white sm:text-4xl">Favorite verses</h1>
+        <AnimPanning
+          duration={0.8}
+          delay={0.2}
+          direction="up"
+          from={0}
+          to={0}
+          fade="in"
+          animOnce={true}
+          onScroll={false}
+        >
+          <h1 id="favorites-heading" className="mt-2 text-3xl font-semibold text-white sm:text-4xl theme-accent">Favorite verses</h1>
+        </AnimPanning>
       </div>
 
       {error ? <p role="alert" className="mb-6 rounded-xl border border-red-300/20 bg-red-300/10 p-4 text-sm text-red-200">{error}</p> : null}
 
       {favorites.length === 0 ? (
-        <div className="rounded-3xl border border-white/10 bg-white/5 p-8 text-center">
-          <p className="text-white/70">You have not saved any verses yet.</p>
-          <Link href={routes.home} className="mt-4 inline-block font-semibold theme-accent hover:underline">EXPLORE SCRIPTURE</Link>
-        </div>
+        <AnimPanning
+          duration={0.8}
+          delay={0.2}
+          direction="up"
+          from={0}
+          to={0}
+          fade="in"
+          animOnce={true}
+        >
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 text-center">
+            <p className="text-white/70">You have not saved any verses yet.</p>
+            <Link href={routes.home} className="mt-4 inline-block font-semibold theme-accent hover:underline">EXPLORE SCRIPTURE</Link>
+          </div>
+        </AnimPanning>
       ) : (
         <div className="grid gap-4 md:grid-cols-2">
-          {favorites.map((favorite) => (
-            <article key={`${favorite.translationId}-${favorite.bookId}-${favorite.chapter}-${favorite.verse}`} className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-5">
-              <div className="flex items-start justify-between gap-4">
-                <p className="text-xs font-semibold tracking-[0.15em] theme-accent">{favorite.reference.toUpperCase()}</p>
-                <p className="shrink-0 rounded-full border border-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/60">
-                  {favorite.translationId}
-                </p>
-              </div>
-              <p className="mt-4 flex-1 leading-relaxed text-white/85">{favorite.text.trim()}</p>
-              <div className="mt-5 flex items-center justify-between gap-4">
-                <Link href={`/${favorite.translationId}/${favorite.bookId}/${favorite.chapter}`} className="text-xs font-semibold text-white/65 hover:text-white">OPEN CHAPTER</Link>
-                <button type="button" onClick={() => handleRemove(favorite)} className="text-xs font-semibold text-red-200 hover:text-red-100">REMOVE</button>
-              </div>
+          {favorites.map((favorite, index) => (
+
+            <article key={`${favorite.translationId}-${favorite.bookId}-${favorite.chapter}-${favorite.verse}`}>
+              <AnimPanning
+                duration={0.8}
+                key={`${favorite.translationId}-${favorite.bookId}-${favorite.chapter}-${favorite.verse}-anim-${index}`}
+                delay={0.2 + index * 0.1}
+                direction="up"
+                from={0}
+                to={0}
+                fade="in"
+                animOnce={true}
+                onScroll={false}
+                className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-5"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <p className="text-xs font-semibold tracking-[0.15em] theme-accent">{favorite.reference.toUpperCase()}</p>
+                  <p className="shrink-0 rounded-full border border-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/60">
+                    {favorite.translationId}
+                  </p>
+                </div>
+                <p className="mt-4 flex-1 leading-relaxed text-white/85">{favorite.text.trim()}</p>
+                <div className="mt-5 flex items-center justify-between gap-4">
+                  <Link href={`/${favorite.translationId}/${favorite.bookId}/${favorite.chapter}`} className="text-xs font-semibold text-white/65 hover:text-white">OPEN CHAPTER</Link>
+                  <button type="button" onClick={() => handleRemove(favorite)} className="cursor-pointer text-xs font-semibold text-red-200 hover:text-red-100">REMOVE</button>
+                </div>
+              </AnimPanning>
             </article>
           ))}
         </div>

@@ -3,6 +3,7 @@ import React, { useRef } from 'react'
 import { useGSAP } from "@gsap/react";
 import { usePageTransition } from '../../../lib/gsap/usePageTransition';
 import SmootherContainer from './SmootherContainer';
+import Footer from '../layout/Footer';
 
 interface TransitionLayoutProps {
   children: React.ReactNode;
@@ -24,9 +25,10 @@ const TransitionLayout: React.FC<TransitionLayoutProps> = ({
         <div id='main-container' ref={mainContainer} className={`main-container relative min-h-[100vh] min-h-[100dvh] flex flex-col`}>
           <div aria-hidden="true" className="h-20 sm:h-24 lg:h-24" />
           {children}
+          <Footer />
         </div>
-        <div className={`transition-overlay absolute w-full h-full top-0 left-0 z-40 pointer-events-none bg-white`}>
-          <div className={`transition-overlay absolute w-full h-full top-0 left-0 pointer-events-auto bg-white`}></div>
+        <div className={`transition-overlay absolute w-full h-full top-0 left-0 z-40 pointer-events-none bg-black`}>
+          <div className={`transition-overlay absolute w-full h-full top-0 left-0 pointer-events-auto bg-black`}></div>
         </div>
       </SmootherContainer>
     </>

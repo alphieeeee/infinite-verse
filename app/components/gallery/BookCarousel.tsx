@@ -59,7 +59,7 @@ export default function BookCarousel({ title, description, translationId, books 
             onClick={() => emblaApi?.scrollPrev()}
             disabled={!canScrollPrev}
             aria-label={`Scroll ${title} books left`}
-            className="rounded-full border theme-accent-border bg-white/5 px-3 py-2 text-sm text-white transition theme-accent-border-hover disabled:cursor-not-allowed disabled:opacity-40"
+            className="cursor-pointer rounded-full border theme-accent-border bg-white/5 px-3 py-2 text-sm text-white transition theme-accent-border-hover disabled:cursor-not-allowed disabled:opacity-40"
           >
             ←
           </button>
@@ -68,7 +68,7 @@ export default function BookCarousel({ title, description, translationId, books 
             onClick={() => emblaApi?.scrollNext()}
             disabled={!canScrollNext}
             aria-label={`Scroll ${title} books right`}
-            className="rounded-full border theme-accent-border bg-white/5 px-3 py-2 text-sm text-white transition theme-accent-border-hover disabled:cursor-not-allowed disabled:opacity-40"
+            className="cursor-pointer rounded-full border theme-accent-border bg-white/5 px-3 py-2 text-sm text-white transition theme-accent-border-hover disabled:cursor-not-allowed disabled:opacity-40"
           >
             →
           </button>

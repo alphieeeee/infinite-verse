@@ -3,6 +3,7 @@ import Breadcrumbs from "../components/layout/Breadcrumbs";
 import PageHero from "../components/hero/PageHero";
 import BookCarousel from "../components/gallery/BookCarousel";
 import { filterBooksByTestament } from "../../lib/helpers/bookTestament";
+import AnimPanning from "../components/gsap/AnimPanning";
 
 export default async function TranslationPage({
   params,
@@ -25,18 +26,39 @@ export default async function TranslationPage({
       />
       <Breadcrumbs items={[{ label: "SCRIPTURE", href: "/" }, { label: translationLabel, href: `/${translationId}` }]} />
       <div className="space-y-10">
-        <BookCarousel
-          title="Old Testament"
-          description=""
-          translationId={translationId}
-          books={oldBooks}
-        />
-        <BookCarousel
-          title="New Testament"
-          description=""
-          translationId={translationId}
-          books={newBooks}
-        />
+        <AnimPanning
+          duration={0.8}
+          delay={0.2}
+          direction="up"
+          from={0}
+          to={0}
+          fade="in"
+          animOnce={true}
+          onScroll={false}
+        >
+          <BookCarousel
+            title="Old Testament"
+            description=""
+            translationId={translationId}
+            books={oldBooks}
+          />
+        </AnimPanning>
+        <AnimPanning
+          duration={0.8}
+          delay={0.2}
+          direction="up"
+          from={0}
+          to={0}
+          fade="in"
+          animOnce={true}
+        >
+          <BookCarousel
+            title="New Testament"
+            description=""
+            translationId={translationId}
+            books={newBooks}
+          />
+        </AnimPanning>
       </div>
     </main>
   );
