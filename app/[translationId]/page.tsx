@@ -45,12 +45,13 @@ export default async function TranslationPage({
         </AnimPanning>
         <AnimPanning
           duration={0.8}
-          delay={0.2}
+          delay={0.4}
           direction="up"
           from={0}
           to={0}
           fade="in"
           animOnce={true}
+          onScroll={false}
         >
           <BookCarousel
             title="New Testament"
