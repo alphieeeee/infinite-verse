@@ -17,6 +17,15 @@ export default function BookCarousel({ title, description, translationId, books 
     align: "start",
     containScroll: "trimSnaps",
     dragFree: true,
+    slidesToScroll: 2,
+    breakpoints: {
+      "(min-width: 768px)": {
+        slidesToScroll: 3,
+      },
+      "(min-width: 1024px)": {
+        slidesToScroll: 4,
+      },
+    },
   });
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
