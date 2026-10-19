@@ -9,12 +9,12 @@ export default function DiscussionTopicCard({ topic }: { topic: DiscussionTopic 
         <div className="flex items-start justify-between gap-4">
           <div>
             <time className="text-xs font-semibold uppercase tracking-[0.2em] text-white/65">{topic.date}</time>
-            <h2 className="mt-2 text-md font-semibold theme-accent">{topic.title}</h2>
-            {topic.subtitle ? <p className="mt-1 text-sm text-white/65">{topic.subtitle}</p> : null}
+            <h2 className="mt-2 text-md font-semibold theme-accent uppercase">{topic.title}</h2>
+            {topic.subtitle ? <p className="mt-1 text-sm text-white/65 capitalize">{topic.subtitle}</p> : null}
           </div>
           <span aria-hidden="true" className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/60 transition group-hover:border-white/20 group-hover:text-white">View</span>
         </div>
-        <p className="mt-4 text-sm leading-6 text-white/72">{topic.description}</p>
+        <p className="mt-4 text-sm leading-6 text-white/72 capitalize">{topic.description}</p>
       </Link>
     </div>
   );

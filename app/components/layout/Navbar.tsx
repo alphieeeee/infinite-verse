@@ -14,12 +14,13 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const favoritesHref = user ? routes.favorites : `${routes.login}?next=${routes.favorites}`;
   const isFavoritesActive = pathname === routes.favorites || pathname.startsWith(`${routes.favorites}/`);
+  const isDiscussionActive = pathname === routes.discussion || pathname.startsWith(`${routes.discussion}/`);
   const isAuthRoute =
     pathname === routes.login ||
     pathname.startsWith(`${routes.login}/`) ||
     pathname === routes.register ||
     pathname.startsWith(`${routes.register}/`);
-  const isScriptureActive = !isFavoritesActive && !isAuthRoute;
+  const isScriptureActive = !isFavoritesActive && !isDiscussionActive && !isAuthRoute;
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -84,8 +85,8 @@ export default function Navbar() {
             </Link>
             <Link
               href={routes.discussion}
-              aria-current={pathname === routes.discussion || pathname.startsWith(`${routes.discussion}/`) ? "page" : undefined}
-              className={`transition-colors hover:text-[var(--theme-accent)] focus-visible:text-[var(--theme-accent)] ${pathname === routes.discussion || pathname.startsWith(`${routes.discussion}/`) ? "theme-accent" : ""}`}
+              aria-current={isDiscussionActive ? "page" : undefined}
+              className={`transition-colors hover:text-[var(--theme-accent)] focus-visible:text-[var(--theme-accent)] ${isDiscussionActive ? "theme-accent" : ""}`}
             >
               DISCUSSION
             </Link>
@@ -156,8 +157,8 @@ export default function Navbar() {
               <Link
                 href={routes.discussion}
                 onClick={closeMenu}
-                aria-current={pathname === routes.discussion || pathname.startsWith(`${routes.discussion}/`) ? "page" : undefined}
-                className={`rounded-xl px-4 py-3 hover:theme-accent-bg-soft ${pathname === routes.discussion || pathname.startsWith(`${routes.discussion}/`) ? "theme-accent theme-accent-bg-soft" : ""}`}
+                aria-current={isDiscussionActive ? "page" : undefined}
+                className={`rounded-xl px-4 py-3 hover:theme-accent-bg-soft ${isDiscussionActive ? "theme-accent theme-accent-bg-soft" : ""}`}
               >
                 DISCUSSION
               </Link>
