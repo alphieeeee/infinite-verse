@@ -3,6 +3,6 @@ export type DiscussionTopic = {
   date: string;
   title: string;
   subtitle?: string;
-  description: string;
+  description?: string;
   componentName: string;
 };
