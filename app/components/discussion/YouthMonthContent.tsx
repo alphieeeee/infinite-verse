@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function FindingPeaceContent() {
   return (
-    <div className="mt-3 max-w-4xl space-y-10 text-white">
+    <div className="mt-3 mb-[10rem] max-w-4xl space-y-10 text-white">
       <section aria-labelledby="return-to-the-lord-title">
         {/* <h2 id="return-to-the-lord-title" className="text-xl font-semibold uppercase theme-accent sm:text-2xl">
           Return to the Lord with all your heart
