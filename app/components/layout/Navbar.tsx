@@ -82,6 +82,13 @@ export default function Navbar() {
             >
               FAVORITES
             </Link>
+            <Link
+              href={routes.discussion}
+              aria-current={pathname === routes.discussion || pathname.startsWith(`${routes.discussion}/`) ? "page" : undefined}
+              className={`transition-colors hover:text-[var(--theme-accent)] focus-visible:text-[var(--theme-accent)] ${pathname === routes.discussion || pathname.startsWith(`${routes.discussion}/`) ? "theme-accent" : ""}`}
+            >
+              DISCUSSION
+            </Link>
           </div>
         </div>
 
@@ -145,6 +152,14 @@ export default function Navbar() {
                 }`}
               >
                 FAVORITES
+              </Link>
+              <Link
+                href={routes.discussion}
+                onClick={closeMenu}
+                aria-current={pathname === routes.discussion || pathname.startsWith(`${routes.discussion}/`) ? "page" : undefined}
+                className={`rounded-xl px-4 py-3 hover:theme-accent-bg-soft ${pathname === routes.discussion || pathname.startsWith(`${routes.discussion}/`) ? "theme-accent theme-accent-bg-soft" : ""}`}
+              >
+                DISCUSSION
               </Link>
               {isAuthReady && user ? (
                 <button type="button" onClick={handleLogout} className="cursor-pointer rounded-xl px-4 py-3 text-left hover:theme-accent-bg-soft">
