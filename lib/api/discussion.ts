@@ -6,7 +6,7 @@ const discussionTopics: DiscussionTopic[] = [
     date: "October 19, 2026",
     title: "Return To The Lord With All Your Heart",
     subtitle: "Looking for a way back to God",
-    description: "minor league, MAJOR IMPACT",
+    description: "",
     componentName: "youth-month-content"
   },
   // {

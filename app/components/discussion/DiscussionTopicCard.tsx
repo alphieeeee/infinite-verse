@@ -14,7 +14,7 @@ export default function DiscussionTopicCard({ topic }: { topic: DiscussionTopic 
           </div>
           <span aria-hidden="true" className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/60 transition group-hover:border-white/20 group-hover:text-white">View</span>
         </div>
-        <p className="mt-4 text-sm leading-6 text-white/72 capitalize">{topic.description}</p>
+        {topic.description ? <p className="mt-4 text-sm leading-6 text-white/72 capitalize">{topic.description}</p> : null}
       </Link>
     </div>
   );
