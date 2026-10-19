@@ -17,7 +17,16 @@ export default function FindingPeaceContent() {
         <h2 id="jeremiah-17-9-title" className="text-xl font-semibold uppercase theme-accent sm:text-2xl">
           Jeremiah 17:9
         </h2>
-        <p className="mt-5 space-y-3 text-base leading-7 text-white/78 marker:theme-accent">The heart is  more deceitful than anything else and is desperately sick; who can understand it? <Link href={`/web/JER/17`}><span className="theme-accent">(Jeremiah 17:9)</span></Link></p>
+        <p className="mt-5 space-y-3 text-base leading-7 text-white/78 marker:theme-accent">The heart is  more deceitful than anything else and is desperately sick; who can understand it?</p>
+      </section>
+      <section aria-labelledby="whole-hearted-repentance-title">
+        <h2 id="whole-hearted-repentance-title" className="text-xl font-semibold uppercase theme-accent sm:text-2xl">
+          Whole Hearted Repentance
+        </h2>
+        <p className="mt-5 space-y-3 text-base leading-7 text-white/78 marker:theme-accent"><sup>12</sup> "Yet even now," declares the LORD, <span className="theme-accent">"Return to me with all your heart,</span> with fasting, with weeping, and with mourning;</p>
+        <p className="space-y-3 text-base leading-7 text-white/78 marker:theme-accent"><sup>13</sup> And <span className="theme-accent">rend your heart and not your garments.</span>" Now return to the LORD your God, For he is gracious and compassionate, Slow to anger, abounding in lovingkindness And relenting of evil.</p>
+
+        <p className="mt-5 space-y-3 text-base leading-7 text-white/78 marker:theme-accent font-bold">True repentance is not merely feeling sorry for sin; it is wholehearted turning away from sin and returning to our gracious God.</p>
       </section>
       <section aria-labelledby="discussion-questions-title">
         <h2 id="discussion-questions-title" className="text-xl font-semibold uppercase theme-accent sm:text-2xl">
